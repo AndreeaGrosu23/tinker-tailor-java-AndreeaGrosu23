@@ -2,6 +2,7 @@ package com.codecool.tinkertailor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 class TinkerTailor {
 
@@ -14,15 +15,18 @@ class TinkerTailor {
 
     public List execute() {
         List<Integer> outcome = new ArrayList<>();
+        List<Integer> nElements = new ArrayList<>();
 
-        outcome.add(3);
-        outcome.add(1);
-        outcome.add(5);
-        outcome.add(2);
-        outcome.add(4);
+        for (int i=1; i<=n; i++)
+            nElements.add(i);
 
-        // Works for n = 5 and k = 3
-        // Well, you should come up with a more general algorithm :)
+        int startIndex = 0;
+
+        while (nElements.size()>0) {
+            startIndex = (startIndex+k-1)%nElements.size();
+            outcome.add(nElements.get(startIndex));
+            nElements.remove(startIndex);
+        }
 
         return outcome;
     }
